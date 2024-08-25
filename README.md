@@ -48,5 +48,4 @@ To run the web application, follow these steps:
    conda create -n dl python=3.10.12
    conda activate dl
    pip install -r requirements.txt
-   pip install pip install ultralytics
    python app.py
