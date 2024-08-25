@@ -32,6 +32,7 @@ To run this system, you need to install the following dependencies:
 - PyTorch
 - OpenCV
 - Other dependencies listed in `requirements.txt`
+- Miniconda
 ## Contact
 If you have any questions or would like to contribute to the project, please contact us at: nguyentrongduc_t66@hus.edu.vn
 
@@ -44,4 +45,8 @@ To run the web application, follow these steps:
    Change your current directory to the `web` folder where `app.py` is located:
 
    ```bash
+   conda create -n dl python=3.10.12
+   conda activate dl
+   pip install -r requirements.txt
+   pip install pip install ultralytics
    python app.py
