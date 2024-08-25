@@ -1,0 +1,2 @@
+D:/pytorch-CycleGAN-and-pix2pix/web/static/uploads/file1.png
+D:/pytorch-CycleGAN-and-pix2pix/web/static/uploads/file2.png

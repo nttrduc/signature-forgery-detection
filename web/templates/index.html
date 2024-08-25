@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Div for dynamic background effect -->
+    <div id="vanta-bg"></div>
+
+    <!-- Full screen container for heading -->
+    <div class="full-screen">
+        <h1 class="animate__animated animate__fadeIn">
+            <i class='bx bx-shield'></i> ForgeryShield: AI-Powered Signature Fraud Detection
+        </h1>
+    </div>
+
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Left side for uploading photos -->
+        <div class="left">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <h2>Upload Photos</h2>
+                <div>
+                    <label for="file1">Upload Photo 1:</label>
+                    <input type="file" name="file1" id="file1" required>
+                </div>
+                <div>
+                    <label for="file2">Upload Photo 2:</label>
+                    <input type="file" name="file2" id="file2" required>
+                </div>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <!-- Center for displaying uploaded photos -->
+        <div class="center">
+            <h2>Uploaded Photos</h2>
+            <img id="photo1" src="{{ url_for('uploaded_file', filename='file1.png') }}" alt="Photo 1">
+            <img id="photo2" src="{{ url_for('uploaded_file', filename='file2.png') }}" alt="Photo 2">
+        </div>
+
+        <!-- Right side for running the script and displaying output -->
+        <div class="right">
+            <h2>Detection</h2>
+            <button id="run-script-btn">Execute</button>
+            <div id="result">
+                <h2>Result</h2>
+                <pre id="output"></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle script execution and display result -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        // Initialize Vanta.js for dynamic background
+        VANTA.NET({
+            el: "#vanta-bg",
+            color: 0x007bff,
+            backgroundColor: 0xf4f4f4,
+            points: 12,
+            maxDistance: 20
+        });
+
+        // Script execution and result display
+        document.getElementById('run-script-btn').addEventListener('click', function() {
+            document.getElementById('output').textContent = 'Analyzing...';
+            document.getElementById('run-script-btn').disabled = true;
+
+            fetch('/run-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('output').textContent = data.result;
+                    document.getElementById('run-script-btn').disabled = false;
+                })
+                .catch(error => {
+                    document.getElementById('output').textContent = 'An error occurred: ' + error;
+                    document.getElementById('run-script-btn').disabled = false;
+                });
+        });
+    </script>
+</body>
+</html>
