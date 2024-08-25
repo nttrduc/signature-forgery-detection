@@ -6,6 +6,9 @@ This system uses artificial intelligence to detect signature forgeries. It is di
 2. **Signature Cleaning using CycleGAN**
 3. **Feature Extraction and Forgery Detection using ResNet-18**
 
+![Web Application](intro.png)
+
+
 ## System Components
 
 ### 1. Signature Extraction using YOLO
