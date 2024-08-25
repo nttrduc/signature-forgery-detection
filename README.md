@@ -29,10 +29,9 @@ Finally, the system uses the ResNet-18 model to extract features from the cleane
 
 To run this system, you need to install the following dependencies:
 
-- TensorFlow or PyTorch
+- PyTorch
 - OpenCV
 - Other dependencies listed in `requirements.txt`
-- 
 ## Contact
 If you have any questions or would like to contribute to the project, please contact us at: nguyentrongduc_t66@hus.edu.vn
 
